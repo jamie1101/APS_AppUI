@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.aps_appui.ui.menu.fragment.MessageFragment;
 import com.example.aps_appui.ui.menu.fragment.ScheduleFragment;
 import com.example.aps_appui.ui.menu.fragment.TodayprogressFragment;
 
@@ -21,16 +20,13 @@ public class FragmentViewPagerAdapter extends FragmentStateAdapter {
         if (position == 0){
             return new ScheduleFragment();
         }
-        else if (position == 1){
-            return new TodayprogressFragment();
-        }
         else {
-            return new MessageFragment();
+            return new TodayprogressFragment();
         }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 }

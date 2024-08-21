@@ -13,13 +13,19 @@
         android:theme="@style/Theme.APS_AppUI"
         tools:targetApi="31">
         <activity
+            android:name=".ui.thisLevelOfOrder.ThisLevelOfOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.progressTableQueryResultPage.ProgressTableQueryResultpageActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.setting.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.progress_table_query.Progress_table_queryActivity"
+            android:name=".ui.progressTableQuery.ProgressTableQueryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.progress_table_query.ScheduleActivity"
+            android:name=".ui.progressTableQuery.ScheduleActivity"
             android:exported="false" />
         <activity
             android:name=".ui.TextActivity"

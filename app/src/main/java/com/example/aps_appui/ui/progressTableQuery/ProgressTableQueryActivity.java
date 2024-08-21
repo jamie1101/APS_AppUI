@@ -1,5 +1,6 @@
-package com.example.aps_appui.ui.progress_table_query;
+package com.example.aps_appui.ui.progressTableQuery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,15 +9,14 @@ import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.aps_appui.R;
 
-public class Progress_table_queryActivity extends AppCompatActivity {
+
+public class ProgressTableQueryActivity extends AppCompatActivity implements ProgressTableQueryContract.view{
 
     private Button progress_bt;
+    private  Button confirm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,14 @@ public class Progress_table_queryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        confirm=findViewById(R.id.button7);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
