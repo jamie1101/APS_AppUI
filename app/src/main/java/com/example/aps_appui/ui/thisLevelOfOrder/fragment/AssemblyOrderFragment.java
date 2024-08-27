@@ -1,5 +1,6 @@
 package com.example.aps_appui.ui.thisLevelOfOrder.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,17 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.aps_appui.R;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.AssemblyOrderAdapter;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.InsideThisLevelOfOrderAdapter;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.PreviousCustomsOrderAdapter;
+import com.example.aps_appui.ui.thisLevelOfOrder.fragment.adapter.AssemblyOrderAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class AssemblyOrderFragment extends Fragment {
+    private TextView show_orderNumber,show_masterPartNumber,show_sourceOrderNumber,show_MotherPartProductName;
     private RecyclerView recyclerView;
     private AssemblyOrderAdapter assemblyOrderAdapter;
     private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -47,6 +48,27 @@ public class AssemblyOrderFragment extends Fragment {
         assemblyOrderAdapter = new AssemblyOrderAdapter(arrayList, getActivity());
         recyclerView.setAdapter(assemblyOrderAdapter);
         makeData();
+        //
+        show_orderNumber = view.findViewById(R.id.assembly_numA);
+        show_sourceOrderNumber=view.findViewById(R.id.assembly_numB);
+        show_masterPartNumber=view.findViewById(R.id.assembly_numC);
+        show_MotherPartProductName=view.findViewById(R.id.assembly_numD);
+        Intent getintent = getActivity().getIntent();
+        show_orderNumber.setText(getintent.getStringExtra("assembly_orderNumber"));
+        show_sourceOrderNumber.setText(getintent.getStringExtra("numB"));
+        show_masterPartNumber.setText(getintent.getStringExtra("assembly_masterPartNumber"));
+        show_MotherPartProductName.setText(getintent.getStringExtra("assembly_MotherPartProductName"));
+
+        //
+//        orderNumber.setText("1MO18120"+String.valueOf(new Random().nextInt(89999)+10000));
+//        masterPartNumber.setText("1SO1811"+String.valueOf(new Random().nextInt(999999)));
+//        sourceOrder.setText("F"+String.valueOf(new Random().nextInt(99999))
+//                +String.valueOf(new Random().nextInt(2) == 0 ? "ATN" : "M")
+//                +"-"+String.valueOf(new Random().nextInt(2) == 0 ?"1A":"2"));
+//
+//
+//        MotherPartProductName.setText("EP338T砂漆淺灰/EP340T砂漆灰系統櫃組合---26下箱垃圾桶");
+
     }
     //產生表單內資料
     private void makeData() {

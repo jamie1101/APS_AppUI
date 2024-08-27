@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_inside_this_level_of_order"
     tools:context=".ui.thisLevelOfOrder.fragment.InsideThisLevelOfOrderFragment">
 
     <LinearLayout
@@ -64,7 +65,7 @@
                 android:layout_weight="0.05" />
 
             <View
-                android:layout_width="2dp"
+                android:layout_width="1.5dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dotted_line_ver" />
 
@@ -137,9 +138,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:id="@+id/this_numB"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:text="1SO1811270009"
+                            android:text="numB"
                             android:textSize="10dp" />
 
                         <TextView
@@ -193,11 +195,11 @@
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/pr_numA"
+                        android:id="@+id/this_numA"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="3dp"
-                        android:text="1MO1812040031"
+                        android:text="numA"
                         android:textSize="10dp" />
                 </LinearLayout>
 
@@ -213,11 +215,11 @@
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/pr_numC"
+                        android:id="@+id/this_numC"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
-                        android:text="1SO1812040031"
+                        android:text="numC"
                         android:textSize="10dp" />
 
                     <TextView
@@ -230,8 +232,8 @@
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
-
-                        android:text="ATN260011  系統櫃(垃圾筒) -抽屜+垃圾筒固定片*4pcs"
+                        android:id="@+id/this_numD"
+                        android:text="numD"
                         android:textSize="10dp" />
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -285,7 +287,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="200dp"
+                            android:layout_marginRight="400dp"
                             android:gravity="center"
                             android:text="PCS"
                             android:textSize="10dp" />
@@ -412,7 +414,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="2dp"
+                android:layout_width="1.5dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/dotted_line_ver" />
 

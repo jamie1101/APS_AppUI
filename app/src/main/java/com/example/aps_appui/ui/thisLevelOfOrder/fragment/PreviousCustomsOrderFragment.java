@@ -1,5 +1,6 @@
 package com.example.aps_appui.ui.thisLevelOfOrder.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.aps_appui.R;
-import com.example.aps_appui.ui.menu.fragment.listadapter.TodayprogressAdapter;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.PreviousCustomsOrderAdapter;
+import com.example.aps_appui.ui.thisLevelOfOrder.fragment.adapter.PreviousCustomsOrderAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,9 +23,13 @@ import java.util.Random;
 
 
 public class PreviousCustomsOrderFragment extends Fragment {
+    private TextView show_orderNumber,show_masterPartNumber,show_sourceOrder,show_MotherPartProductName;      //numA,numB,numC
+
+    //
     private RecyclerView recyclerView;
     private PreviousCustomsOrderAdapter previousCustomsOrderAdapter;
     private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+    //
 
     public PreviousCustomsOrderFragment() {
     }
@@ -42,13 +47,32 @@ public class PreviousCustomsOrderFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //建立RECYCLEVIEW
         recyclerView = view.findViewById(R.id.pr_recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         previousCustomsOrderAdapter = new PreviousCustomsOrderAdapter(arrayList, getActivity());
         recyclerView.setAdapter(previousCustomsOrderAdapter);
         makeData();
+        //
+        show_orderNumber = view.findViewById(R.id.pr_numA);
+        show_sourceOrder=view.findViewById(R.id.pr_numB);
+        show_masterPartNumber=view.findViewById(R.id.pr_numC);
+        show_MotherPartProductName=view.findViewById(R.id.pr_numD);
+        Intent getintent = getActivity().getIntent();
+
+        show_orderNumber.setText(getintent.getStringExtra("pr_orderNumber"));
+        show_masterPartNumber.setText(getintent.getStringExtra("pr_masterPartNumber"));
+        show_sourceOrder.setText(getintent.getStringExtra("numB"));
+        show_MotherPartProductName.setText(getintent.getStringExtra("pr_MotherPartProductName"));
+
+//        Intent intent2 = new Intent();
+//        intent2.putExtra("pr_numA", orderNumber.getText().toString());
+//        intent2.putExtra("pr_numB", masterPartNumber.getText().toString());
+//        intent2.putExtra("pr_numC", sourceOrder.getText().toString());
+//        intent2.putExtra("pr_numD", MotherPartProductName.getText().toString());
+
     }
-    //產生表單內資料
+    //recycleview 產生表單內資料
     private void makeData() {
         for (int i =0; i < 10; i++) {
             HashMap<String, String> hashMap = new HashMap<>();

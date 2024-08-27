@@ -1,4 +1,4 @@
-package com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter;
+package com.example.aps_appui.ui.thisLevelOfOrder.fragment.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aps_appui.R;
@@ -14,24 +15,26 @@ import com.example.aps_appui.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InsideThisLevelOfOrderAdapter  extends RecyclerView.Adapter<InsideThisLevelOfOrderAdapter.ViewHolder> {
+public class LaterCustomsOrderAdapter extends RecyclerView.Adapter<LaterCustomsOrderAdapter.ViewHolder> {
     private ArrayList<HashMap<String, String>> List;
     private Activity activity;
-    public InsideThisLevelOfOrderAdapter(ArrayList<HashMap<String, String>> list, Activity activity) {
-        this.List = list;
+
+    public LaterCustomsOrderAdapter(ArrayList<HashMap<String, String>> list, FragmentActivity activity) {
+        this.List =list;
         this.activity = activity;
     }
 
+
     @NonNull
     @Override
-    public InsideThisLevelOfOrderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaterCustomsOrderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_previous_customs_order_adapter, parent, false);
+                .inflate(R.layout.adapter_later_customs_order, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InsideThisLevelOfOrderAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LaterCustomsOrderAdapter.ViewHolder holder, int position) {
         holder.tx1.setText(List.get(position).get("num1"));
         holder.tx2.setText(List.get(position).get("num2"));
         holder.tx3.setText(List.get(position).get("num3"));

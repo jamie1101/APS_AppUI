@@ -1,5 +1,6 @@
 package com.example.aps_appui.ui.thisLevelOfOrder.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import com.example.aps_appui.ui.menu.fragment.listadapter.TodayprogressAdapter;
 
 import com.example.aps_appui.R;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.InsideThisLevelOfOrderAdapter;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.PreviousCustomsOrderAdapter;
+import com.example.aps_appui.ui.thisLevelOfOrder.fragment.adapter.InsideThisLevelOfOrderAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +24,8 @@ import java.util.Random;
 
 
 public class InsideThisLevelOfOrderFragment extends Fragment {
+    private TextView show_orderNumber,show_masterPartNumber,show_sourceOrderNumber,show_MotherPartProductName;
+    //
     private RecyclerView recyclerView;
     private InsideThisLevelOfOrderAdapter insideThisLevelOfOrderAdapter;
     private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -44,8 +48,30 @@ public class InsideThisLevelOfOrderFragment extends Fragment {
         insideThisLevelOfOrderAdapter = new InsideThisLevelOfOrderAdapter(arrayList, getActivity());
         recyclerView.setAdapter(insideThisLevelOfOrderAdapter);
         makeData();
+
+        //
+            Intent getintent = getActivity().getIntent();
+            String this_orderNumber = getintent.getStringExtra("numA");
+            String thisSourceOrder = getintent.getStringExtra("numB");
+            String this_masterPartNumber = getintent.getStringExtra("numC");
+            String this_MotherPartProductName = getintent.getStringExtra("this_MotherPartProductName");
+
+            //
+            show_orderNumber = view.findViewById(R.id.this_numA);
+            show_sourceOrderNumber = view.findViewById(R.id.this_numB);
+            show_masterPartNumber = view.findViewById(R.id.this_numC);
+            show_MotherPartProductName=view.findViewById(R.id.this_numD);
+
+            show_orderNumber.setText(this_orderNumber);
+            show_sourceOrderNumber.setText(thisSourceOrder);
+            show_masterPartNumber.setText(this_masterPartNumber);
+            show_MotherPartProductName.setText(this_MotherPartProductName);
+
+
+
+
     }
-    //產生表單內資料
+    //recycle view 產生表單內資料
     private void makeData() {
         for (int i =0; i < 10; i++) {
             HashMap<String, String> hashMap = new HashMap<>();

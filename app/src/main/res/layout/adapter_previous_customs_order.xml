@@ -20,7 +20,7 @@
             android:layout_weight="0.1"
             android:gravity="center"
             android:text="編號"
-            android:textSize="15dp" />
+            android:textSize="10dp" />
 
         <TextView
             android:id="@+id/num2"

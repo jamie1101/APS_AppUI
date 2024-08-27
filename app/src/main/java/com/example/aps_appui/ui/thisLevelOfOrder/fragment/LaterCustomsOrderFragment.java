@@ -1,5 +1,6 @@
 package com.example.aps_appui.ui.thisLevelOfOrder.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.aps_appui.R;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.LaterCustomsOrderAdapter;
-import com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter.PreviousCustomsOrderAdapter;
+import com.example.aps_appui.ui.thisLevelOfOrder.fragment.adapter.LaterCustomsOrderAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ import java.util.Random;
 
 
 public class LaterCustomsOrderFragment extends Fragment {
+    private TextView show_orderNumber,show_masterPartNumber,show_sourceOrderNumber,show_MotherPartProductName;
     private RecyclerView recyclerView;
     private LaterCustomsOrderAdapter laterCustomsOrderAdapter;
     private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -47,6 +49,19 @@ public class LaterCustomsOrderFragment extends Fragment {
         laterCustomsOrderAdapter = new LaterCustomsOrderAdapter(arrayList, getActivity());
         recyclerView.setAdapter(laterCustomsOrderAdapter);
         makeData();
+        //
+        show_orderNumber=view.findViewById(R.id.later_numA);
+        show_sourceOrderNumber=view.findViewById(R.id.later_numB);
+        show_masterPartNumber=view.findViewById(R.id.later_numC);
+        show_MotherPartProductName=view.findViewById(R.id.later_numD);
+        //
+        Intent getintent=getActivity().getIntent();
+        show_orderNumber.setText(getintent.getStringExtra("later_orderNumber"));
+        show_sourceOrderNumber.setText(getintent.getStringExtra("numB"));
+        show_masterPartNumber.setText(getintent.getStringExtra("later_masterPartNumber"));
+        show_MotherPartProductName.setText(getintent.getStringExtra("later_MotherPartProductName"));
+
+
     }
 
     private void makeData() {

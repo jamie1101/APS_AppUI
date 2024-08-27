@@ -1,4 +1,4 @@
-package com.example.aps_appui.ui.thisLevelOfOrder.fragment.listadapter;
+package com.example.aps_appui.ui.thisLevelOfOrder.fragment.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -14,11 +14,10 @@ import com.example.aps_appui.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PreviousCustomsOrderAdapter extends RecyclerView.Adapter<PreviousCustomsOrderAdapter.ViewHolder> {
+public class AssemblyOrderAdapter extends RecyclerView.Adapter<AssemblyOrderAdapter.ViewHolder> {
     private ArrayList<HashMap<String, String>> List;
     private Activity activity;
-
-    public PreviousCustomsOrderAdapter(ArrayList<HashMap<String, String>> list, Activity activity) {
+    public AssemblyOrderAdapter(ArrayList<HashMap<String, String>> list, Activity activity) {
         this.List = list;
         this.activity = activity;
     }
@@ -26,12 +25,11 @@ public class PreviousCustomsOrderAdapter extends RecyclerView.Adapter<PreviousCu
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_previous_customs_order_adapter, parent, false);
+                .inflate(R.layout.adapter_later_customs_order, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AssemblyOrderAdapter.ViewHolder holder, int position) {
         holder.tx1.setText(List.get(position).get("num1"));
         holder.tx2.setText(List.get(position).get("num2"));
         holder.tx3.setText(List.get(position).get("num3"));
@@ -48,8 +46,7 @@ public class PreviousCustomsOrderAdapter extends RecyclerView.Adapter<PreviousCu
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView  tx1, tx2, tx3, tx4, tx5, tx6, tx7, tx8;
-
+        private TextView tx1, tx2, tx3, tx4, tx5, tx6, tx7, tx8;
         public ViewHolder(View itemView) {
             super(itemView);
             tx1 = itemView.findViewById(R.id.num1);
@@ -60,6 +57,7 @@ public class PreviousCustomsOrderAdapter extends RecyclerView.Adapter<PreviousCu
             tx6 = itemView.findViewById(R.id.num6);
             tx7 = itemView.findViewById(R.id.num7);
             tx8 = itemView.findViewById(R.id.num8);
+
         }
     }
 }
