@@ -1,25 +1,30 @@
 package com.example.aps_appui.ui.thisLevelOfOrder;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.aps_appui.R;
+import com.example.aps_appui.ui.login.LoginModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisLevelOfOrderContract.view {
-
+    private TextView people_Name;
     private TextView show_group;
     private TextView show_existOrOver;
     private TextView show_orderNumber, show_masterPartNumber, show_sourceOrder, show_MotherPartProductName;
@@ -31,13 +36,20 @@ public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisL
     private ThisLevelOfOrderAdapter Adapter;
 
     private ImageView nextpageleft, nextpageright;
-
+    private SharedPreferences sharedPreferences;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_this_level_of_order);
+
+        people_Name = findViewById(R.id.people_Name_ThisLevelOfOrder);
+        sharedPreferences = getSharedPreferences("data_name", Context.MODE_PRIVATE);
+        String name=sharedPreferences.getString("customer_name","default_value");
+        people_Name.setText(name);
+
+
 
         todayprogress_back = findViewById(R.id.todayBack);
         todayprogress_back.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +89,10 @@ public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisL
         todayTab = findViewById(R.id.todayTab);
         Adapter = new ThisLevelOfOrderAdapter(this);
         todayViewPager2.setAdapter(Adapter);
+
+        LinearLayout linearLayout=(LinearLayout) todayTab.getChildAt(0);
+        linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+        linearLayout.setDividerDrawable(ContextCompat.getDrawable(this,R.drawable.green));
 
         new TabLayoutMediator(todayTab, todayViewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
@@ -130,6 +146,7 @@ public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisL
                         show_group.setText("一群-沖床");
                         show_existOrOver.setText("結案");
                         show_existOrOver.setTextColor(Color.RED);
+                        todayTab.setSelectedTabIndicator(R.drawable.tableft);
                         break;
                     case 1:
                         show_orderNumber.setText(intent.getStringExtra("numA"));
@@ -143,6 +160,7 @@ public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisL
                         show_group.setText("一群-點焊");
                         show_existOrOver.setText("生效");
                         show_existOrOver.setTextColor(Color.GREEN);
+                        todayTab.setSelectedTabIndicator(R.drawable.tabcenter);
                         break;
                     case 2:
                         show_orderNumber.setText(intent.getStringExtra("later_orderNumber"));
@@ -156,6 +174,7 @@ public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisL
                         show_group.setText("一群-塗裝");
                         show_existOrOver.setText("生效");
                         show_existOrOver.setTextColor(Color.GREEN);
+                        todayTab.setSelectedTabIndicator(R.drawable.tabcenter);
                         break;
                     case 3:
                         show_orderNumber.setText(intent.getStringExtra("assembly_orderNumber"));
@@ -169,6 +188,7 @@ public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisL
                         show_group.setText("一群-裝配");
                         show_existOrOver.setText("生效");
                         show_existOrOver.setTextColor(Color.GREEN);
+                        todayTab.setSelectedTabIndicator(R.drawable.tabcenter);
                         break;
                     case 4:
                         show_orderNumber.setText(intent.getStringExtra("numB")); // 在原本欄位做來源訂單的資料顯示
@@ -182,6 +202,7 @@ public class ThisLevelOfOrderActivity extends AppCompatActivity implements ThisL
                         show_amount.setText(" ");
                         show_planBegins.setText(" ");
                         show_planEnd.setText("");
+                        todayTab.setSelectedTabIndicator(R.drawable.tabright);
                         break;
                 }
             }

@@ -35,7 +35,7 @@
                 app:srcCompat="@drawable/people" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/people_Name_Setting"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"

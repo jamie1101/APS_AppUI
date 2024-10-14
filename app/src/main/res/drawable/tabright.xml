@@ -11,10 +11,14 @@
     <item>
         <shape android:shape="rectangle">
             <stroke
-                android:width="2dp"
+                android:width="5dp"
                 android:color="@color/green" />
             <solid android:color="@android:color/white" />
-            <corners android:radius="10dp"/>
+            <corners
+                android:topLeftRadius="0dp"
+                android:topRightRadius="10dp"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="10dp" />
         </shape>
     </item>
 </layer-list>

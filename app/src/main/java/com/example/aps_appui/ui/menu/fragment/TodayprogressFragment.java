@@ -42,6 +42,7 @@ public class TodayprogressFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         recyclerView = view.findViewById(R.id.todayprogressrecycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         todayprogressAdapter = new TodayprogressAdapter(arrayList, getActivity());

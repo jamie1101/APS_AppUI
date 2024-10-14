@@ -33,6 +33,7 @@
                 app:srcCompat="@drawable/people" />
 
             <TextView
+                android:id="@+id/people_Name_Menu"
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
                 android:layout_height="match_parent"
